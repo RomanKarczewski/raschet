@@ -97,7 +97,7 @@ public class Raschet {
                         // СХЕМА 3
                         System.out.print("ВВЕДИТЕ СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБ.ФАЗЕ Z2(ОМ): ");
                         int z2 = scanner.nextInt();
-                        double q2 = z2 / 380;
+                        double q2 = (double) z2 / 380;
                         double q0 = 1.71;
                         e = 2 * (q2 * q0 + 2 * q1 * q0 + 6 * q1 * q2) / (2 * q1 + 4 * q2 + 3 * q0);
                         System.out.println("ВАРИАНТ СХЕМЫ 3. ИСХОДНЫЕ ДАННЫЕ: L= " + l + " F = " + f + " Z0 = " + z0 + " Z3 = " + z3 + " Z2 = " + z2);
