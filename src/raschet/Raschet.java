@@ -3,6 +3,45 @@ package raschet;
 import java.util.Scanner;
 
 public class Raschet {
+
+    /**
+     * Это поля объекта. Они доступны только конкретному объекту.
+     * Исходные данные по таблице (в основной части)
+     */
+    private int z0; //СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ Z0(ОМ)
+    private int z2; //СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБОЧЕЙ ФАЗЕ Z2(ОМ)
+    private int z3; //СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ Z3(ОМ)
+    private double l; //ДЛИНА ОТВЕТВЛЕНИЯ L(KM)
+    private double f; //ВЫСШАЯ ЧАСТОТА КАНАЛА F(КГЦ)
+    private double a1; //КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ)
+    /**
+     * Это результат по таблице
+     */
+    private double k; //КОЭФ. ОТРАЖЕНИЯ ВОЛН К
+    /**
+     * Исходные данные по таблице (в шапке)
+     */
+    private int o; //ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0)
+    private int i; //ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?-ДА(I=1),НЕТ(I=0)
+    private int n; //ОТВЕТВЛЕНИЕ НЕ ОБРАБОТАНО?-ДА(N=1),НЕТ(N=0)
+    private int v; //СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0)
+    private int r3; //ЗАГРАДИТЕЛИ В СКОЛЬКИХ ФАЗАХ?-R3 = 1,2 ИЛИ 3
+    private int p; //ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)
+    /**
+     * промежуточные поля
+     */
+    private double a;
+    private double e;
+    private double k5;
+    private double k6;
+    private double l1;
+    private double q0;
+    private double q1;
+    private double q2;
+    private double q3;
+    private double z1;
+
+
     public static void main(String[] args) {
         double k;
         Scanner scanner = new Scanner(System.in);
@@ -108,10 +147,9 @@ public class Raschet {
                     //СХЕМЫ 2.1 И 2.2
                     System.out.println("отладочная информация (СХЕМЫ 2.1 И 2.2)");
                     k = Raschet.otKoncaVL();
-                    double k1 = k;
                     System.out.print("ВВЕДИТЕ К-Т ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ) (ввод дробной части через запятую): ");
                     double a1 = scanner.nextDouble();
-                    double a = a1 * l + 4.34294 * Math.log(Math.abs(1 / k1));
+                    double a = a1 * l + 4.34294 * Math.log(Math.abs(1 / k));
                     k = -(1 + Math.exp(-0.23 * a))/(3 - Math.exp(-0.23 * a));
                     System.out.println("ВАРИАНТ СХЕМЫ 2. ИСХОДНЫЕ ДАННЫЕ: L= " + l + " F = " + f + " A1 = " + a1);
                 }
