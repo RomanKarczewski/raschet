@@ -17,6 +17,7 @@ public class Raschet {
     /**
      * Это результат по таблице
      */
+
     private double k; //КОЭФ. ОТРАЖЕНИЯ ВОЛН К
     /**
      * Исходные данные по таблице (в шапке)
@@ -27,6 +28,8 @@ public class Raschet {
     private int v; //СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0)
     private int r3; //ЗАГРАДИТЕЛИ В СКОЛЬКИХ ФАЗАХ?-R3 = 1,2 ИЛИ 3
     private int p; //ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)
+
+    private int num; // номер схемы (вычисляется в результате предыдущих полей)
     /**
      * промежуточные поля
      */
@@ -41,9 +44,25 @@ public class Raschet {
     private double q3;
     private double z1;
 
+    public void pechat() {
+        System.out.println("Исходные данные:");
+        System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + z0 + "   ОМ");
+        System.out.println("СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБОЧЕЙ ФАЗЕ             Z2 = " + z2 + "   ОМ");
+        System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + z3 + "   ОМ");
+        System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + l + " KM");
+        System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + f + " КГЦ");
+        System.out.println("КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ                   A1 = " + a1 + " ДБ/КМ");
+        System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?              " + (o==1 ? "ДА" : "НЕТ"));
+        System.out.println("ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?                      " + (i==1 ? "ДА" : "НЕТ"));
+    }
 
     public static void main(String[] args) {
-        double k;
+        Raschet schema = new Raschet();
+        schema.pechat();
+    }
+}
+
+        /*double k;
         Scanner scanner = new Scanner(System.in);
         System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0) ");
         System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ O: ");
@@ -192,4 +211,4 @@ public class Raschet {
         System.out.println("ИСХОДНЫЕ ДАННЫЕ:Z0 = " + z0 + " Z3 = " + z3);
         return k;
     }
-}
+}*/
