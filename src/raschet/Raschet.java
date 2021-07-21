@@ -52,17 +52,48 @@ public class Raschet {
         System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + l + " KM");
         System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + f + " КГЦ");
         System.out.println("КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ                   A1 = " + a1 + " ДБ/КМ");
-        System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?              " + (o==1 ? "ДА" : "НЕТ"));
-        System.out.println("ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?                      " + (i==1 ? "ДА" : "НЕТ"));
+        System.out.println("ТОЧКА НЕОДНОРОДНОСТИ " + (o==1 ? "" : "НЕ ") + "ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ");
+        System.out.println("ОТВЕТВЛЕНИЕ " + (i==1 ? "" : "НЕ ") + "ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ" );
+        System.out.println("ОТВЕТВЛЕНИЕ " + (n==0 ? "" : "НЕ ") + "ОБРАБОТАНО ЗАГРАДИТЕЛЕМ");
+        System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-" + (v==0 ? "ЗЕМЛЯ" : "ФАЗА "));
+        System.out.println(r3>0 && r3<4 ? "ЗАГРАДИТЕЛИ В " + r3 + "ФАЗАХ" : "НЕДОПУСТИМОЕ ЗНАЧЕНИЕ R3");
+        System.out.println("ПРИСОЕДИНЕНИЕ " + (p==1 ? "" : "НЕ ") + "В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ");
+        System.out.println();
+        System.out.println("Номер схемы " + num);
+        System.out.println("a = " + a);
+        System.out.println("e = " + e);
+        System.out.println("k5 = " + k5);
+        System.out.println("k6 = " + k6);
+        System.out.println("l1 = " + l1);
+        System.out.println("q0 = " + q0);
+        System.out.println("q1 = " + q1);
+        System.out.println("q2 = " + q2);
+        System.out.println("q3 = " + q3);
+        System.out.println("z1 = " + z1);
+    }
+
+    public void vvod() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0) ");
+        System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ O: ");
+        this.o = scanner.nextInt();
+        if (this.o == 1) {
+            System.out.println("ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?-ДА(I=1),НЕТ(I=0)");
+            System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ I: ");
+            this.i = scanner.nextInt();
+        } else {
+            System.out.println("Подпрограмма ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ...");
+        }
     }
 
     public static void main(String[] args) {
         Raschet schema = new Raschet();
+        schema.vvod();
         schema.pechat();
     }
 }
 
-        /*double k;
+        /* double k;
         Scanner scanner = new Scanner(System.in);
         System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0) ");
         System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ O: ");
