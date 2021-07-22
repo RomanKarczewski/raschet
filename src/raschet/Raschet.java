@@ -29,7 +29,7 @@ public class Raschet {
     private int r3; //ЗАГРАДИТЕЛИ В СКОЛЬКИХ ФАЗАХ?-R3 = 1,2 ИЛИ 3
     private int p; //ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)
 
-    private int num; // номер схемы (вычисляется в результате предыдущих полей)
+    private float num; // номер схемы (вычисляется в результате предыдущих полей)
     /**
      * промежуточные поля
      */
@@ -82,7 +82,15 @@ public class Raschet {
             System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ I: ");
             this.i = scanner.nextInt();
         } else {
-            System.out.println("Подпрограмма ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ...");
+            // Ввод из подпрограммы ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ..."
+            System.out.println("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ФИЛЬТРА ПРИСОЕДИНЕНИЯ Z0(в ОМ) ");
+            this.z0 = scanner.nextInt();
+            System.out.println("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ЗАГРАДИТЕЛЯ Z3(в ОМ) ");
+            this.z3 = scanner.nextInt();
+            System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0) ");
+            System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ V: ");
+            this.v = scanner.nextInt();
+            this.num = (float) (this.v == 0 ? 1.1 : 1.2);
         }
     }
 
