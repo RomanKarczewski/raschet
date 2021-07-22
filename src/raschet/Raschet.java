@@ -57,7 +57,7 @@ public class Raschet {
         System.out.println("ОТВЕТВЛЕНИЕ " + (n==0 ? "" : "НЕ ") + "ОБРАБОТАНО ЗАГРАДИТЕЛЕМ");
         System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-" + (v==0 ? "ЗЕМЛЯ" : "ФАЗА "));
         System.out.println(r3>0 && r3<4 ? "ЗАГРАДИТЕЛИ В " + r3 + "ФАЗАХ" : "НЕДОПУСТИМОЕ ЗНАЧЕНИЕ R3");
-        System.out.println("ПРИСОЕДИНЕНИЕ " + (p==1 ? "" : "НЕ ") + "В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ");
+        System.out.println("ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛЕНИЯ " + (p==1 ? "" : "НЕ ") + "К ОДНОЙ ФАЗЕ");
         System.out.println();
         System.out.println("Номер схемы " + num);
         System.out.println("a = " + a);
