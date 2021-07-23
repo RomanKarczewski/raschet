@@ -126,7 +126,7 @@ public class Raschet {
                     this.z0 = scanner.nextInt();
                     System.out.print("ВВЕДИТЕ СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБ.ФАЗЕ Z3(ОМ): ");
                     this.z3 = scanner.nextInt();
-                    System.out.println("ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)");
+                    System.out.println("ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0) ");
                     System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ P: ");
                     this.p = scanner.nextInt();
                     if (this.p == 0) {
@@ -142,13 +142,7 @@ public class Raschet {
                 } else {
                     /*ИСПОЛЬЗ. ДЛЯ СВЯЗИ СХЕМЫ 2.1 И 2.2
                     Ввод из подпрограммы ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ..."*/
-                    System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ФИЛЬТРА ПРИСОЕДИНЕНИЯ Z0(в ОМ) ");
-                    this.z0 = scanner.nextInt();
-                    System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ЗАГРАДИТЕЛЯ Z3(в ОМ) ");
-                    this.z3 = scanner.nextInt();
-                    System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0) ");
-                    System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ V: ");
-                    this.v = scanner.nextInt();
+                    vvodTchk12();
                     // до этого места и аналогичное место попробовать вынести в еще один метод
                     this.num = (float) (this.v == 0 ? 2.1 : 2.2);
                     System.out.print("ВВЕДИТЕ К-Т ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ) (ввод дробной части через запятую): ");
@@ -157,16 +151,25 @@ public class Raschet {
             }
         } else {
             // Ввод из подпрограммы ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ..."
-            System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ФИЛЬТРА ПРИСОЕДИНЕНИЯ Z0(в ОМ) ");
-            this.z0 = scanner.nextInt();
-            System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ЗАГРАДИТЕЛЯ Z3(в ОМ) ");
-            this.z3 = scanner.nextInt();
-            System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0) ");
-            System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ V: ");
-            this.v = scanner.nextInt();
+            vvodTchk12();
             // до этого места и аналогичное место попробовать вынести в еще один метод
             this.num = (float) (this.v == 0 ? 1.1 : 1.2);
         }
+    }
+
+    public void vvodTchk12() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ФИЛЬТРА ПРИСОЕДИНЕНИЯ Z0(в ОМ) ");
+        this.z0 = scanner.nextInt();
+        System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ СОПРОТИВЛЕНИЯ ЗАГРАДИТЕЛЯ Z3(в ОМ) ");
+        this.z3 = scanner.nextInt();
+        System.out.println("СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0) ");
+        System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ V: ");
+        this.v = scanner.nextInt();
+    }
+
+    public void calc() {
+
     }
 
     public static void main(String[] args) {
