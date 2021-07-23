@@ -273,6 +273,116 @@ public class Raschet {
         }
     }
 
+    public void pech1Sch() {
+        switch (this.num) {
+            case 11 -> {
+                System.out.println("Схема номер 1.1");
+                System.out.println("Вид точки неоднородности - конец ВЛ");
+                System.out.println("Схема фаза - земля");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 12 -> {
+                System.out.println("Схема номер 1.2");
+                System.out.println("Вид точки неоднородности - конец ВЛ");
+                System.out.println("Схема фаза - фаза");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 21 -> {
+                System.out.println("Схема номер 2.1");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("используемое для связи");
+                System.out.println("длинное (длина его больше 19/f)");
+                System.out.println("Схема фаза - земля");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+                System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + this.l + " KM");
+                System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + this.f + " КГЦ");
+                System.out.println("КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ                   A1 = " + this.a1 + " ДБ/КМ");
+            }
+            case 22 -> {
+                System.out.println("Схема номер 2.2");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("используемое для связи");
+                System.out.println("длинное (длина его больше 19/f)");
+                System.out.println("Схема фаза - фаза");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+                System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + this.l + " KM");
+                System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + this.f + " КГЦ");
+                System.out.println("КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ                   A1 = " + this.a1 + " ДБ/КМ");
+            }
+            case 3 -> {
+                System.out.println("Схема номер 3");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("используемое для связи");
+                System.out.println("короткое (длина его не более 19/f)");
+                System.out.println("Присоединенное к 1 фазе");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБОЧЕЙ ФАЗЕ             Z2 = " + this.z2 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+                System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + this.l + " KM");
+                System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + this.f + " КГЦ");
+            }
+            case 4 -> {
+                System.out.println("Схема номер 4");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("используемое для связи");
+                System.out.println("короткое (длина его не более 19/f)");
+                System.out.println("Присоединенное к 2 или 3 фазам");
+                System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + this.z0 + "   ОМ");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+                System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + this.l + " KM");
+                System.out.println("ВЫСШАЯ ЧАСТОТА КАНАЛА                               F  = " + this.f + " КГЦ");
+            }
+            case 5 -> {
+                System.out.println("Схема номер 5");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("неиспользуемое для связи,");
+                System.out.println("обработанное заградителем,");
+                System.out.println("схема фаза - земля");
+                System.out.println("заградитель в 1 фазе");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 6 -> {
+                System.out.println("Схема номер 6");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("неиспользуемое для связи,");
+                System.out.println("обработанное заградителем,");
+                System.out.println("схема фаза - земля");
+                System.out.println("заградитель в 2 фазах");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 7 -> {
+                System.out.println("Схема номер 7");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("неиспользуемое для связи,");
+                System.out.println("обработанное заградителем,");
+                System.out.println("схема фаза - земля");
+                System.out.println("заградитель в 3 фазах");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 8 -> {
+                System.out.println("Схема номер 8");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("неиспользуемое для связи,");
+                System.out.println("обработанное заградителем,");
+                System.out.println("схема фаза - фаза");
+                System.out.println("СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ            Z3 = " + this.z3 + "   ОМ");
+            }
+            case 9 -> {
+                System.out.println("Схема номер 9");
+                System.out.println("Вид точки неоднородности - ответвление,");
+                System.out.println("неиспользуемое для связи,");
+                System.out.println("необработанное заградителем,");
+                System.out.println("ДЛИНА ОТВЕТВЛЕНИЯ                                   L  = " + this.l + " KM");
+                System.out.println("КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ                   A1 = " + this.a1 + " ДБ/КМ");
+            }
+        }
+        System.out.println("КОЭФ. ОТРАЖЕНИЯ ВОЛН ОТ ОТВЕТВЛЕНИЯ K= " + this.k);
+    }
+
     public static void mass() {
         Raschet[] schem = new Raschet[10];
         for (int i = 0; i < 10; i++) {
@@ -291,7 +401,8 @@ public class Raschet {
         Raschet schema = new Raschet();
         schema.vvod();
         schema.calc();
-        schema.pechat();
+        System.out.println();
+        schema.pech1Sch();
         // mass(); - начало разработки графика автоматического перебора одного из параметров
     }
 }
