@@ -387,11 +387,14 @@ public class Raschet {
         Raschet[] schem = new Raschet[10];
         for (int i = 0; i < 10; i++) {
             schem[i] = new Raschet();
+            // далее идут фиксированные данные (можно вводить с клавиатуры)
             schem[i].num = 21;
             schem[i].z0 = 500;
             schem[i].z3 = 500;
             schem[i].l = 10;
+            //далее - шаг автоматического изменения параметра
             schem[i].a1 = 0.1 + (double) i / 100;
+            //далее - вычисление схемы и вывод X и Y
             schem[i].calc();
             System.out.println("i = " + i + " a1: " + schem[i].a1 + " k: " + schem[i].k);
         }
