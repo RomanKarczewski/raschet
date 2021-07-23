@@ -4,45 +4,41 @@ import java.util.Scanner;
 
 public class Raschet {
 
-    /**
-     * Это поля объекта. Они доступны только конкретному объекту.
-     * Исходные данные по таблице (в основной части)
-     */
-    private int z0; //СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ Z0(ОМ)
-    private int z2; //СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБОЧЕЙ ФАЗЕ Z2(ОМ)
-    private int z3; //СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ Z3(ОМ)
-    private double l; //ДЛИНА ОТВЕТВЛЕНИЯ L(KM)
-    private double f; //ВЫСШАЯ ЧАСТОТА КАНАЛА F(КГЦ)
-    private double a1; //КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ)
+    public int z0; //СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ Z0(ОМ)
+    public int z2; //СОПРОТИВЛЕНИЕ НАГРУЗКИ В НЕРАБОЧЕЙ ФАЗЕ Z2(ОМ)
+    public int z3; //СОПРОТИВЛЕНИЕ ЗАГРАДИТЕЛЯ В РАБОЧЕЙ ФАЗЕ Z3(ОМ)
+    public double l; //ДЛИНА ОТВЕТВЛЕНИЯ L(KM)
+    public double f; //ВЫСШАЯ ЧАСТОТА КАНАЛА F(КГЦ)
+    public double a1; //КОЭФФИЦИЕНТ ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ)
     /**
      * Это результат по таблице
      */
 
-    private double k; //КОЭФ. ОТРАЖЕНИЯ ВОЛН К
+    public double k; //КОЭФ. ОТРАЖЕНИЯ ВОЛН К
     /**
      * Исходные данные по таблице (в шапке)
      */
-    private int o; //ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0)
-    private int i; //ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?-ДА(I=1),НЕТ(I=0)
-    private int n; //ОТВЕТВЛЕНИЕ НЕ ОБРАБОТАНО?-ДА(N=1),НЕТ(N=0)
-    private int v; //СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0)
-    private int r3; //ЗАГРАДИТЕЛИ В СКОЛЬКИХ ФАЗАХ?-R3 = 1,2 ИЛИ 3
-    private int p; //ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)
+    public int o; //ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0)
+    public int i; //ОТВЕТВЛЕНИЕ ИСПОЛЬЗУЕТСЯ ДЛЯ СВЯЗИ?-ДА(I=1),НЕТ(I=0)
+    public int n; //ОТВЕТВЛЕНИЕ НЕ ОБРАБОТАНО?-ДА(N=1),НЕТ(N=0)
+    public int v; //СХЕМА ПРИСОЕДИНЕНИЯ ФАЗА-ФАЗА?-ДА(V=1),НЕТ(V=0)
+    public int r3; //ЗАГРАДИТЕЛИ В СКОЛЬКИХ ФАЗАХ?-R3 = 1,2 ИЛИ 3
+    public int p; //ПРИСОЕДИНЕНИЕ В КОНЦЕ ОТВЕТВЛ.К ОДНОЙ ФАЗЕ?-ДА(P=1),НЕТ(P=0)
 
-    private float num; // номер схемы (вычисляется в результате предыдущих полей)
+    public int num; // номер схемы (вычисляется в результате предыдущих полей)
     /**
      * промежуточные поля
      */
-    private double a;
-    private double e;
-    private double k5;
-    private double k6;
-    private double l1;
-    private double q0;
-    private double q1;
-    private double q2;
-    private double q3;
-    private double z1;
+    public double a;
+    public double e;
+    public double k5;
+    public double k6;
+    public double l1;
+    public double q0;
+    public double q1;
+    public double q2;
+    public double q3;
+    public double z1;
 
     public void pechat() {
         System.out.println("Исходные данные:");
@@ -70,6 +66,8 @@ public class Raschet {
         System.out.println("q2 = " + q2);
         System.out.println("q3 = " + q3);
         System.out.println("z1 = " + z1);
+        System.out.println();
+        System.out.println("КОЭФ. ОТРАЖЕНИЯ ВОЛН ОТ ОТВЕТВЛЕНИЯ K= " + k);
     }
 
     public void vvod() {
@@ -144,7 +142,7 @@ public class Raschet {
                     Ввод из подпрограммы ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ..."*/
                     vvodTchk12();
                     // до этого места и аналогичное место попробовать вынести в еще один метод
-                    this.num = (float) (this.v == 0 ? 2.1 : 2.2);
+                    this.num = this.v == 0 ? 21 : 22;
                     System.out.print("ВВЕДИТЕ К-Т ЗАТУХАНИЯ ОТВЕТВЛЕНИЯ A1(ДБ/КМ) (ввод дробной части через запятую): ");
                     this.a1 = scanner.nextDouble();
                 }
@@ -153,7 +151,7 @@ public class Raschet {
             // Ввод из подпрограммы ВАРИАНТ СХЕМЫ 1.К-Т ОТРАЖЕНИЯ ВОЛН ОТ КОНЦА ВЛ ..."
             vvodTchk12();
             // до этого места и аналогичное место попробовать вынести в еще один метод
-            this.num = (float) (this.v == 0 ? 1.1 : 1.2);
+            this.num = this.v == 0 ? 11 : 12;
         }
     }
 
@@ -169,17 +167,101 @@ public class Raschet {
     }
 
     public void calc() {
+        switch (this.num) {
+            case 11 -> {
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 380;
+                // ВЫЧИСЛЕНИЕ КВЛ1=K5
+                this.k5 = 0.55 * (this.q1 - 2.12) / (this.q1 + 1.16);
+                // ВЫЧИСЛЕНИЕ КВЛ2=K6
+                this.k6 = (this.q1 - 0.1) / (this.q1 + 1.24);
+                this.k = Math.abs(this.k5) <= Math.abs(this.k6) ? this.k6 : this.k5;
+            }
+            case 12 -> {
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 760;
+                this.k = (this.q1 - 1) / (this.q1 + 1);
+            }
+            case 21 -> {
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 380;
+                // ВЫЧИСЛЕНИЕ КВЛ1=K5
+                this.k5 = 0.55 * (this.q1 - 2.12) / (this.q1 + 1.16);
+                // ВЫЧИСЛЕНИЕ КВЛ2=K6
+                this.k6 = (this.q1 - 0.1) / (this.q1 + 1.24);
+                this.k = Math.abs(this.k5) <= Math.abs(this.k6) ? this.k6 : this.k5;
+                /* до этого места возможно вынесение в отдельный метод вместе с case 11
+                а после этого тоже в отдельный вместе с case 22 */
+                this.a = this.a1 * this.l + 4.34294 * Math.log(Math.abs(1 / this.k));
+                this.k = -(1 + Math.exp(-0.23 * this.a))/(3 - Math.exp(-0.23 * this.a));
+            }
+            case 22 -> {
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 760;
+                this.k = (this.q1 - 1) / (this.q1 + 1);
+                /* до этого места возможно вынесение в отдельный метод вместе с case 12
+                а после этого тоже в отдельный вместе с case 21 */
+                this.a = this.a1 * this.l + 4.34294 * Math.log(Math.abs(1 / this.k));
+                this.k = -(1 + Math.exp(-0.23 * this.a))/(3 - Math.exp(-0.23 * this.a));
+            }
+            case 3 -> {// возможно обьединение с case 40 (середина разная)
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 380;
 
+                this.q2 = (double) this.z2 / 380;
+                this.q0 = 1.71;
+                this.e = 2 * (this.q2 * this.q0 + 2 * this.q1 * this.q0 + 6 * this.q1 * this.q2) / (2 * this.q1 + 4 * this.q2 + 3 * this.q0);
+
+                this.k = -1 / (1 + this.e);
+            }
+            case 4 -> {// возможно обьединение с case 30 (середина разная)
+                this.z1 = (this.z0 * this.z3) / (this.z0 + this.z3);
+                this.q1 = this.z1 / 380;
+
+                this.e = this.q1;
+
+                this.k = -1 / (1 + this.e);
+            }
+            case 5 -> {
+                this.q3 = (double) this.z3 / 380;
+                this.q0 = 1.71;
+
+                this.e = 4 * this.q3 * this.q0 / (2 * this.q3 + 3 * this.q0);
+
+                this.k = -1 / (1 + this.e);
+            }
+            case 6 -> {
+                this.q3 = (double) this.z3 / 380;
+                this.q0 = 1.71;
+
+                this.e = (6 * this.q3 + 4 * this.q0 * this.q3 + 5 * this.q0) / (4 + 2 * this.q3 + 3 * this.q0 + 3 * this.q0 / this.q3);
+
+                this.k = -1 / (1 + this.e);
+            }
+            case 7, 8 -> {
+                this.q3 = (double) this.z3 / 380;
+                this.q0 = 1.71;
+
+                this.e = 2 * this.q3;
+
+                this.k = -1 / (1 + this.e);
+            }
+            case 9 -> {
+                this.a = 0.115 * this.a1 * this.l;
+                this.k = -(1 - this.a) / (1 + this.a);
+            }
+        }
     }
 
     public static void main(String[] args) {
         Raschet schema = new Raschet();
         schema.vvod();
+        schema.calc();
         schema.pechat();
     }
 }
 
-        /* double k;
+        /*double k;
         Scanner scanner = new Scanner(System.in);
         System.out.println("ТОЧКА НЕОДНОРОДНОСТИ ЯВЛЯЕТСЯ ОТВЕТВЛЕНИЕМ?-ДА(O=1),НЕТ(O=0) ");
         System.out.print("ВВЕДИТЕ ЗНАЧЕНИЕ O: ");
