@@ -39,6 +39,32 @@ public class Raschet {
     public double q3;
     public double z1;
 
+    Raschet() {
+        z0 = -666;
+        z2 = -666;
+        z3 = -666;
+        l = -666.66;
+        f = -666.66;
+        a1 = -666.66;
+        k = -666.66;
+        o = -666;
+        i = -666;
+        n = -666;
+        v = -666;
+        r3 = -666;
+        p = -666;
+        num = -666;
+        a = -666.66;
+        e = -666.66;
+        k5 = -666.66;
+        k6 = -666.66;
+        l1 = -666.66;
+        q1 = -666.66;
+        q2 = -666.66;
+        q3 = -666.66;
+        z1 = -666.66;
+    }
+
     public void pechat() {
         System.out.println("Исходные данные:");
         System.out.println("СОПРОТИВЛЕНИЕ ФИЛЬТРА ПРИСОЕДИНЕНИЯ В РАБОЧЕЙ ФАЗЕ  Z0 = " + z0 + "   ОМ");
@@ -247,11 +273,26 @@ public class Raschet {
         }
     }
 
+    public static void mass() {
+        Raschet[] schem = new Raschet[10];
+        for (int i = 0; i < 10; i++) {
+            schem[i] = new Raschet();
+            schem[i].num = 21;
+            schem[i].z0 = 500;
+            schem[i].z3 = 500;
+            schem[i].l = 10;
+            schem[i].a1 = 0.1 + (double) i / 100;
+            schem[i].calc();
+            System.out.println("i = " + i + " a1: " + schem[i].a1 + " k: " + schem[i].k);
+        }
+    }
+
     public static void main(String[] args) {
         Raschet schema = new Raschet();
         schema.vvod();
         schema.calc();
         schema.pechat();
+        // mass(); - начало разработки графика автоматического перебора одного из параметров
     }
 }
 
