@@ -34,7 +34,6 @@ public class Raschet {
     public double k5;
     public double k6;
     public double l1;
-    public double q0;
     public double q1;
     public double q2;
     public double q3;
@@ -61,7 +60,6 @@ public class Raschet {
         System.out.println("k5 = " + k5);
         System.out.println("k6 = " + k6);
         System.out.println("l1 = " + l1);
-        System.out.println("q0 = " + q0);
         System.out.println("q1 = " + q1);
         System.out.println("q2 = " + q2);
         System.out.println("q3 = " + q3);
@@ -209,8 +207,7 @@ public class Raschet {
                 this.q1 = this.z1 / 380;
 
                 this.q2 = (double) this.z2 / 380;
-                this.q0 = 1.71;
-                this.e = 2 * (this.q2 * this.q0 + 2 * this.q1 * this.q0 + 6 * this.q1 * this.q2) / (2 * this.q1 + 4 * this.q2 + 3 * this.q0);
+                this.e = 2 * (this.q2 * 1.71 + 2 * this.q1 * 1.71 + 6 * this.q1 * this.q2) / (2 * this.q1 + 4 * this.q2 + 3 * 1.71);
 
                 this.k = -1 / (1 + this.e);
             }
@@ -224,23 +221,20 @@ public class Raschet {
             }
             case 5 -> {
                 this.q3 = (double) this.z3 / 380;
-                this.q0 = 1.71;
 
-                this.e = 4 * this.q3 * this.q0 / (2 * this.q3 + 3 * this.q0);
+                this.e = 4 * this.q3 * 1.71 / (2 * this.q3 + 3 * 1.71);
 
                 this.k = -1 / (1 + this.e);
             }
             case 6 -> {
                 this.q3 = (double) this.z3 / 380;
-                this.q0 = 1.71;
 
-                this.e = (6 * this.q3 + 4 * this.q0 * this.q3 + 5 * this.q0) / (4 + 2 * this.q3 + 3 * this.q0 + 3 * this.q0 / this.q3);
+                this.e = (6 * this.q3 + 4 * 1.71 * this.q3 + 5 * 1.71) / (4 + 2 * this.q3 + 3 * 1.71 + 3 * 1.71 / this.q3);
 
                 this.k = -1 / (1 + this.e);
             }
             case 7, 8 -> {
                 this.q3 = (double) this.z3 / 380;
-                this.q0 = 1.71;
 
                 this.e = 2 * this.q3;
 
